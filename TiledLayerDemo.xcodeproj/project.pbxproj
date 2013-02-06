@@ -18,6 +18,13 @@
 		F96DF01B16C291BB00F08A84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01A16C291BB00F08A84 /* Default-568h@2x.png */; };
 		F96DF01E16C291BB00F08A84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF01D16C291BB00F08A84 /* ViewController.m */; };
 		F96DF02116C291BB00F08A84 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01F16C291BB00F08A84 /* ViewController.xib */; };
+		F96DF02B16C291F100F08A84 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02816C291F100F08A84 /* GridView.m */; };
+		F96DF02C16C291F100F08A84 /* LandscapeGridController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02A16C291F100F08A84 /* LandscapeGridController.m */; };
+		F96DF02F16C2937200F08A84 /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02E16C2937200F08A84 /* TimeView.m */; };
+		F96DF03216C293D600F08A84 /* ChannelProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF03116C293D500F08A84 /* ChannelProgram.m */; };
+		F96DF03416C2976C00F08A84 /* LandscapeGridController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */; };
+		F96DF03616C298D200F08A84 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96DF03516C298D200F08A84 /* QuartzCore.framework */; };
+		F96DF03816C298FB00F08A84 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96DF03716C298FB00F08A84 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +44,17 @@
 		F96DF01C16C291BB00F08A84 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		F96DF01D16C291BB00F08A84 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F96DF02016C291BB00F08A84 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		F96DF02716C291F100F08A84 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
+		F96DF02816C291F100F08A84 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
+		F96DF02916C291F100F08A84 /* LandscapeGridController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGridController.h; sourceTree = "<group>"; };
+		F96DF02A16C291F100F08A84 /* LandscapeGridController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandscapeGridController.m; sourceTree = "<group>"; };
+		F96DF02D16C2937200F08A84 /* TimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeView.h; sourceTree = "<group>"; };
+		F96DF02E16C2937200F08A84 /* TimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeView.m; sourceTree = "<group>"; };
+		F96DF03016C293D500F08A84 /* ChannelProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelProgram.h; sourceTree = "<group>"; };
+		F96DF03116C293D500F08A84 /* ChannelProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelProgram.m; sourceTree = "<group>"; };
+		F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandscapeGridController.xib; sourceTree = "<group>"; };
+		F96DF03516C298D200F08A84 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		F96DF03716C298FB00F08A84 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F96DF03816C298FB00F08A84 /* CoreText.framework in Frameworks */,
+				F96DF03616C298D200F08A84 /* QuartzCore.framework in Frameworks */,
 				F96DF00516C291BB00F08A84 /* UIKit.framework in Frameworks */,
 				F96DF00716C291BB00F08A84 /* Foundation.framework in Frameworks */,
 				F96DF00916C291BB00F08A84 /* CoreGraphics.framework in Frameworks */,
@@ -73,9 +93,11 @@
 		F96DF00316C291BB00F08A84 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F96DF03516C298D200F08A84 /* QuartzCore.framework */,
 				F96DF00416C291BB00F08A84 /* UIKit.framework */,
 				F96DF00616C291BB00F08A84 /* Foundation.framework */,
 				F96DF00816C291BB00F08A84 /* CoreGraphics.framework */,
+				F96DF03716C298FB00F08A84 /* CoreText.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -83,6 +105,15 @@
 		F96DF00A16C291BB00F08A84 /* TiledLayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F96DF03016C293D500F08A84 /* ChannelProgram.h */,
+				F96DF03116C293D500F08A84 /* ChannelProgram.m */,
+				F96DF02D16C2937200F08A84 /* TimeView.h */,
+				F96DF02E16C2937200F08A84 /* TimeView.m */,
+				F96DF02716C291F100F08A84 /* GridView.h */,
+				F96DF02816C291F100F08A84 /* GridView.m */,
+				F96DF02916C291F100F08A84 /* LandscapeGridController.h */,
+				F96DF02A16C291F100F08A84 /* LandscapeGridController.m */,
+				F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */,
 				F96DF01316C291BB00F08A84 /* AppDelegate.h */,
 				F96DF01416C291BB00F08A84 /* AppDelegate.m */,
 				F96DF01C16C291BB00F08A84 /* ViewController.h */,
@@ -163,6 +194,7 @@
 				F96DF01916C291BB00F08A84 /* Default@2x.png in Resources */,
 				F96DF01B16C291BB00F08A84 /* Default-568h@2x.png in Resources */,
 				F96DF02116C291BB00F08A84 /* ViewController.xib in Resources */,
+				F96DF03416C2976C00F08A84 /* LandscapeGridController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +208,10 @@
 				F96DF01116C291BB00F08A84 /* main.m in Sources */,
 				F96DF01516C291BB00F08A84 /* AppDelegate.m in Sources */,
 				F96DF01E16C291BB00F08A84 /* ViewController.m in Sources */,
+				F96DF02B16C291F100F08A84 /* GridView.m in Sources */,
+				F96DF02C16C291F100F08A84 /* LandscapeGridController.m in Sources */,
+				F96DF02F16C2937200F08A84 /* TimeView.m in Sources */,
+				F96DF03216C293D600F08A84 /* ChannelProgram.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
