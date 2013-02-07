@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "ViewController.h"
+#import "LandscapeGridController.h"
 
 @implementation AppDelegate
 
@@ -16,9 +16,17 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad )
+    {
+        self.viewController = [[LandscapeGridController alloc] initWithNibName:@"LandscapeGridController-ipad" bundle:nil];        
+    } else {
+        self.viewController = [[LandscapeGridController alloc] initWithNibName:@"LandscapeGridController" bundle:nil];
+    }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    
+    
     return YES;
 }
 

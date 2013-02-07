@@ -7,7 +7,7 @@
 //
 
 #import "GridView.h"
-//#import "NSDate+TimeZones.h"
+#import "ChannelProgram.h"
 #import <QuartzCore/QuartzCore.h>
 #import <CoreText/CTFont.h>
 #import <CoreText/CTStringAttributes.h>
@@ -47,15 +47,14 @@
 
 - (void)drawEmptyRect:(CGRect)rect inContext:(CGContextRef)context
 {
-    UIColor *emptyColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"grid_empty.png"]];
-    CGContextSetFillColorWithColor(context, emptyColor.CGColor);
+    CGContextSetFillColorWithColor(context, [[UIColor grayColor] CGColor]);
     CGContextFillRect(context, rect);
 }
 
-- (void)drawProgram:(NSDictionary *)programData inChannel:(int)channelIndex withClipBox:(CGRect)clipBox inContext:(CGContextRef)context withScaleFactor:(CGFloat)scaleFactor
+- (void)drawProgram:(ChannelProgram *)programData inChannel:(int)channelIndex withClipBox:(CGRect)clipBox inContext:(CGContextRef)context withScaleFactor:(CGFloat)scaleFactor
 {
-    NSDate *startTimeDate = [NSDate dateWithTimeIntervalSince1970:[[programData objectForKey:@"starttime"] intValue]];
-    NSDate *endTimeDate = [NSDate dateWithTimeIntervalSince1970:[[programData objectForKey:@"endtime"] intValue]];
+    NSDate *startTimeDate = [NSDate dateWithTimeIntervalSince1970:programData.starttime];
+    NSDate *endTimeDate = [NSDate dateWithTimeIntervalSince1970:programData.endtime];
     NSDateComponents *todayComponents = [_calendar components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate date]];
     NSDateComponents *startComponents = [_calendar components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:startTimeDate];
     NSDateComponents *endComponents = [_calendar components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:endTimeDate];
@@ -89,14 +88,7 @@
     
     //Draw title
     CGContextSaveGState( context );
-    id programName = [programData objectForKey:@"title"];
-    NSString *programNameString;
-    if ([programName isKindOfClass:[NSNumber class]])
-    {
-        programNameString = [NSString stringWithFormat:@"%@", programName];
-    } else {
-        programNameString = programName;
-    }
+    NSString *programNameString = programData.title;
     
 	//NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:programName];
     CTFontRef helvetica;
@@ -165,7 +157,7 @@
     
     
     //start draw description
-    NSString *description = [programData objectForKey:@"introdesc"];
+    NSString *description = programData.introdesc;
     if (scaleFactor >= 1 && description != nil && ((NSNull *)description != [NSNull null]) && [description length] > 0) {
         NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:description];
         [string addAttribute:(id)kCTFontAttributeName
@@ -178,7 +170,7 @@
                        range:NSMakeRange(0, [string length])];
         
         // layout master
-        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)string);
+        CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((__bridge_retained CFAttributedStringRef) string);
         
         // left column form
         textFrame.size.height = GRID_ROW_HEIGHT - 35;
@@ -191,7 +183,6 @@
                                             path, NULL);
         
         CGContextTranslateCTM(context, 0, -35);
-        
         // draw description
         CTFrameDraw(frameRef, context);
         
@@ -223,14 +214,14 @@
 	CGRect box = CGContextGetClipBoundingBox(context);
 	
 	// Calculate tile index
-    /*
+    
 	CGSize tileSize = [(CATiledLayer*)layer tileSize];
 	CGRect tbox = CGRectApplyAffineTransform(CGRectMake(0, 0, tileSize.width, tileSize.height), 
 											 CGAffineTransformInvert(CGContextGetCTM(context)));
 	CGFloat x = box.origin.x / tbox.size.width;
 	CGFloat y = box.origin.y / tbox.size.height;
-    */
-    //NSLog(@"Drawing layer %@", NSStringFromCGPoint(CGPointMake(x, y)));
+    
+    NSLog(@"Drawing layer %@", NSStringFromCGPoint(CGPointMake(x, y)));
 	
 	// Clear background
     [self drawEmptyRect:box inContext:context];
@@ -284,37 +275,46 @@
                 NSArray *progArray = [_delegate programsForChannelAtChannel:[NSNumber numberWithInt:[channelID intValue]]];
                 
                 if (progArray != nil) {
-                    for (NSDictionary *programData in progArray) {
-                        NSTimeInterval programStart = [[programData objectForKey:@"starttime"] intValue];
-                        NSTimeInterval programEnd = [[programData objectForKey:@"endtime"] intValue];       
+                    for (ChannelProgram *programData in progArray) {
+                        NSTimeInterval programStart = programData.starttime;
+                        NSTimeInterval programEnd = programData.endtime;
                         
-                        if (tileStart <= programStart || programEnd <= tileEnd || (programStart <= tileStart && programEnd >= tileEnd)) {
+                        if ((programStart <= tileStart && programEnd >= tileStart) || (tileStart <= programStart && programStart <= tileEnd)) {
+                        //if (tileStart <= programStart || programEnd <= tileEnd || (programStart <= tileStart && programEnd >= tileEnd)) {
                             //CGContextSaveGState(context);
                             [self drawProgram:programData inChannel:i withClipBox:box inContext:context withScaleFactor:scaleFactor];
-                            //CGContextRestoreGState(context);  
+                            //CGContextRestoreGState(context);  
                         }
                     }
                 }
 
             }
         }
+    } else {
+        NSLog(@"Something wrong!");
     }
 	// Render label (Setup)
-    /*
-	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:16];
+    
+	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:10];
 	CGContextSelectFont(context, [[font fontName] cStringUsingEncoding:NSASCIIStringEncoding], [font pointSize], kCGEncodingMacRoman);
 	CGContextSetTextDrawingMode(context, kCGTextFill);
 	CGContextSetTextMatrix(context, CGAffineTransformMakeScale(1, -1));
-	CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:0 green:1.0 blue:0 alpha:0.5] CGColor]);
+	CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.5] CGColor]);
 	
 	// Draw label
-	NSString* s = [NSString stringWithFormat:@"(%.1f, %.1f)",x,y];
+	NSString* s = [NSString stringWithFormat:@"(%.0f, %.0f)",x,y];
 	CGContextShowTextAtPoint(context,
 							 box.origin.x,
 							 box.origin.y + [font pointSize],
 							 [s cStringUsingEncoding:NSMacOSRomanStringEncoding],
 							 [s lengthOfBytesUsingEncoding:NSMacOSRomanStringEncoding]);
-    */
+    
+    CGContextSetLineWidth(context, 1.0);
+    CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.5] CGColor]);
+    CGContextAddRect(context, box);
+    CGContextStrokePath(context);
+    
+    
     //[timer stopTimer];
     //NSLog(@"Total layer render time was: %lf milliseconds", [timer timeElapsedInMilliseconds]);  
     //[timer release];
@@ -324,7 +324,8 @@
 #pragma mark View overrides
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event 
-{   
+{
+    
     for (UITouch *touch in touches)
 	{
         CGPoint touchPoint = [touch locationInView:self];
@@ -336,11 +337,12 @@
             CGFloat timeInSec = touchPoint.x * 60.0 * 60.0 / (CGFloat)GRID_COLUMN_WIDTH;
             
             NSCalendar *cal = [NSCalendar currentCalendar];
+            [cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
             NSDateComponents *todayComponents = [cal components:(NSTimeZoneCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
             if ([todayComponents hour] < 6) {
-                [todayComponents setDay:[todayComponents day]-1];
+                //[todayComponents setDay:[todayComponents day]-1];
             }
-            [todayComponents setHour:6];
+            [todayComponents setHour:4];
             [todayComponents setMinute:0];
             [todayComponents setSecond:0];
             
@@ -349,29 +351,29 @@
             
             NSLog(@"%@", tappedTime);
             
-            int tappedTimeStamp = [todayStart timeIntervalSince1970] + timeInSec;
+            int tappedTimeStamp = [tappedTime timeIntervalSince1970];
             
             NSArray *progArray = [_delegate programsForChannelAtIndex:channelID];
-            for (NSDictionary *programData in progArray) {
-                int startTime = [[programData objectForKey:@"starttime"] intValue];
-                int endTime = [[programData objectForKey:@"endtime"] intValue];
+            for (ChannelProgram *programData in progArray) {
+                int startTime = programData.starttime;
+                int endTime = programData.endtime;
                 
                 if (startTime < tappedTimeStamp && tappedTimeStamp < endTime) {
                     
-                    if (_delegate != nil && [_delegate respondsToSelector:@selector(gridView:didSelectProgram:)]) {
-                        [_delegate gridView:self didSelectProgram:programData];
-                       
-                    }
-                    break;
-                    /*
-                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TEST" message:[NSString stringWithFormat:@"You have tapped '%@'. Broadcast ID:%@", program.m_programName, program.broadcastID] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                    NSDateComponents *startComponents = [_calendar components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate dateWithTimeIntervalSince1970:startTime]];
+                    NSDateComponents *endComponents = [_calendar components:(NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:[NSDate dateWithTimeIntervalSince1970:endTime]];
+                    NSString *durationString = [NSString stringWithFormat:@"%d:%02d - %d:%02d", [startComponents hour], [startComponents minute], [endComponents hour], [endComponents minute]];
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"TEST" message:[NSString stringWithFormat:@"You have tapped '%@'. %@", programData.title, durationString] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     [alertView show];
-                    [alertView release];
-                    */
+                    
+                    break;
+                    
                 }                
             }
 		}
     }
+    
 }
 
 #endif

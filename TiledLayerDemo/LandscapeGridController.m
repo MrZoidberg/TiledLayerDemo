@@ -114,15 +114,15 @@
     _currentTimeView.frame = frame;
     
     [_currentTimeView setNeedsDisplay];
-    [timeScrollView setNeedsDisplay];
+    //[timeScrollView setNeedsDisplay];
 }
 
 
 - (void)selectActiveChannels
 {
 	_channelsList = [[NSMutableArray alloc] initWithCapacity:10];
-    for (int i=1; i<=10; i++) {
-        [_channelsList addObject:[NSNumber numberWithInt:i]];
+    for (int i = 1; i < 10; i++) {
+        [_channelsList addObject:@{@"id": [NSString stringWithFormat:@"%d", i]}];
     }
 }
 
@@ -131,21 +131,31 @@
     _programsDict = [[NSMutableDictionary alloc] init];
     
     int programCount = 1;
-    for (int channelId=1; channelId<=10; channelId++) {
+    for (int channelId = 0; channelId < 10; channelId++) {
         NSMutableArray *channelPrograms = [[NSMutableArray alloc] init];
         NSDate *date = [NSDate date];
-        NSCalendar *cal = [[NSCalendar alloc] init];
-        NSDateComponents *components = [cal components:NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
-        components.hour = 0;
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        [cal setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+        NSDateComponents *components = [cal components:NSTimeZoneCalendarUnit | NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit fromDate:date];
         components.minute = 0;
         components.second = 0;
-        for (int hour = 0; hour < 24; hour++) {
+        int hour = 4;
+        int minutes = rand() % 60;
+        int hourCounter = 0;
+        while(hourCounter < 24){
             components.hour = hour;
-            components.minute = rand() % 60;
+            components.minute = minutes;
             
             ChannelProgram *program = [[ChannelProgram alloc] init];
             program.starttime = [[cal dateFromComponents:components] timeIntervalSince1970];
-            components.minute = rand() % (60 - components.minute) + components.minute;
+            minutes = minutes + MAX(rand() % 120, 40);
+            while (minutes >= 60) {
+                hour++;
+                hourCounter++;
+                components.hour = components.hour + 1;
+                minutes = minutes - 60;
+            }
+            components.minute = minutes;
             program.endtime = [[cal dateFromComponents:components] timeIntervalSince1970];
             
             program.title = [NSString stringWithFormat:@"Program #%d", programCount];
@@ -154,6 +164,8 @@
             program.introdesc = @"test program";
             
             [channelPrograms addObject:program];
+            
+            
         }
         
         [_programsDict setObject:channelPrograms forKey:[NSNumber numberWithInt:channelId]];
@@ -205,12 +217,12 @@
     }
     
     CGSize world = CGSizeMake(GRID_DEFAULT_WIDTH,  GRID_ROW_HEIGHT * [_channelsList count]);
-    _gridView.frame = CGRectMake(0, 0, world.width * gridScale,world.height * gridScale);
+    _gridView.frame = CGRectMake(0, 0, world.width * gridScale, world.height * gridScale);
     programsScrollView.contentSize = _gridView.frame.size;
     
 //    CGSize vpSize = programsScrollView.frame.size;
-	CGFloat zoomOutLevels = 0.6;//MAX(ceil(log2(MAX(world.width* gridScale/vpSize.width, world.height* gridScale/vpSize.height))), 0);
-	CGFloat zoomInLevels = 2;
+	CGFloat zoomOutLevels = 1;//MAX(ceil(log2(MAX(world.width* gridScale/vpSize.width, world.height* gridScale/vpSize.height))), 0);
+	CGFloat zoomInLevels = 3;
     
 	[(CATiledLayer*)_gridView.layer setLevelsOfDetail:zoomOutLevels+zoomInLevels+1];
 	[(CATiledLayer*)_gridView.layer setLevelsOfDetailBias:zoomInLevels];
@@ -219,14 +231,17 @@
 	programsScrollView.maximumZoomScale = pow(2, zoomInLevels);
     
     //set current time view frame
+    
     CGRect frame = _currentTimeView.frame;
-    frame.size.height = _gridView.frame.size.height * gridScale;
+    frame.size.height = _gridView.frame.size.height;
     _currentTimeView.frame = frame;
     
     [channelsTableView reloadData];
     [self updateCurrentTimeView];
     [self scrollToNow:NO];
-    [_gridView.layer setNeedsDisplayInRect: _gridView.layer.bounds];
+    
+    _gridView.layer.contents = nil;
+    [_gridView.layer setNeedsDisplay];
     
     [self.loadingLabel setHidden:YES];
     [self.activityIndicator stopAnimating];
@@ -306,16 +321,18 @@
     frame.size.width = _gridView.frame.size.width;
     _timeView.frame = frame;
     timeScrollView.contentSize = _timeView.frame.size;
+    timeScrollView.contentOffset  = CGPointMake(programsScrollView.contentOffset.x, timeScrollView.contentOffset.y);
     
     _currentTimeView.hidden = NO;
     frame = _currentTimeView.frame;
-    frame.size.height = _gridView.frame.size.height * gridScale;
+    frame.size.height =  _gridView.frame.size.height;;
     _currentTimeView.frame = frame;
     
     channelsTableView.contentOffset = CGPointMake(channelsTableView.contentOffset.x, programsScrollView.contentOffset.y);
     [channelsTableView reloadData];
     [_timeView setNeedsDisplay];
     [timeScrollView setNeedsDisplay];
+    
     [_gridView.layer setNeedsDisplayInRect: _gridView.layer.bounds];
      
     [self updateCurrentTimeView];
@@ -367,32 +384,12 @@
     }
     
     NSDictionary *channelInfoDict = [_channelsList objectAtIndex:[indexPath row]];
-    NSString *channelName = [channelInfoDict objectForKey:@"name"];
     UIImage* channelImage = [UIImage imageNamed: [NSString stringWithFormat:@"%s.png", [[channelInfoDict objectForKey:@"id"] UTF8String]]];
     
-    imageView.frame = CGRectMake(3, 3, channelImage.size.width, channelImage.size.height);
+    imageView.frame = CGRectMake((aTableView.frame.size.width - channelImage.size.width)/2, ([self tableView:aTableView heightForRowAtIndexPath:indexPath] - channelImage.size.height)/2 , channelImage.size.width, channelImage.size.height);
     imageView.image = channelImage;
-    
-    CGFloat rowHeight = [self tableView:aTableView heightForRowAtIndexPath:indexPath];
-    
-    CGFloat actualFontSize = 9;
-    CGSize actualTitleSize = [channelName sizeWithFont:[UIFont systemFontOfSize:9] constrainedToSize:CGSizeMake(aTableView.frame.size.width - 6, rowHeight - CGRectGetMaxY(imageView.frame)) lineBreakMode:NSLineBreakByWordWrapping];
-    
-    if (rowHeight - CGRectGetMaxY(imageView.frame) > 9) {
-/*        CGFloat divHeight = (rowHeight - CGRectGetMaxY(imageView.frame) - actualTitleSize.height)/2;
-        if (divHeight < 0) {
-            divHeight = 0;
-        } else if (divHeight > 3) {
-            divHeight = 3;
-        }*/
-        label.frame = CGRectMake(3, CGRectGetMaxY(imageView.frame) + 3, actualTitleSize.width, actualTitleSize.height);
-        label.font = [UIFont systemFontOfSize:actualFontSize];
-        label.text = channelName;
-        [label setHidden:NO];
-    } else {
-        [label setHidden:YES];
-    }
-    
+
+    [label setHidden:YES];
     return cell;
 }
 

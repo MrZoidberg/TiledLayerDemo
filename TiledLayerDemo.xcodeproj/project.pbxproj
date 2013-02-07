@@ -16,8 +16,6 @@
 		F96DF01716C291BB00F08A84 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01616C291BB00F08A84 /* Default.png */; };
 		F96DF01916C291BB00F08A84 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01816C291BB00F08A84 /* Default@2x.png */; };
 		F96DF01B16C291BB00F08A84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01A16C291BB00F08A84 /* Default-568h@2x.png */; };
-		F96DF01E16C291BB00F08A84 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF01D16C291BB00F08A84 /* ViewController.m */; };
-		F96DF02116C291BB00F08A84 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DF01F16C291BB00F08A84 /* ViewController.xib */; };
 		F96DF02B16C291F100F08A84 /* GridView.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02816C291F100F08A84 /* GridView.m */; };
 		F96DF02C16C291F100F08A84 /* LandscapeGridController.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02A16C291F100F08A84 /* LandscapeGridController.m */; };
 		F96DF02F16C2937200F08A84 /* TimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F96DF02E16C2937200F08A84 /* TimeView.m */; };
@@ -25,6 +23,28 @@
 		F96DF03416C2976C00F08A84 /* LandscapeGridController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */; };
 		F96DF03616C298D200F08A84 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96DF03516C298D200F08A84 /* QuartzCore.framework */; };
 		F96DF03816C298FB00F08A84 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F96DF03716C298FB00F08A84 /* CoreText.framework */; };
+		F96DF03E16C3FFBE00F08A84 /* LandscapeGridController-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F96DF03D16C3FFBE00F08A84 /* LandscapeGridController-ipad.xib */; };
+		F96DF05716C403BB00F08A84 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04216C403BB00F08A84 /* 0.png */; };
+		F96DF05816C403BB00F08A84 /* 0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04316C403BB00F08A84 /* 0@2x.png */; };
+		F96DF05916C403BB00F08A84 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04416C403BB00F08A84 /* 1.png */; };
+		F96DF05A16C403BB00F08A84 /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04516C403BB00F08A84 /* 1@2x.png */; };
+		F96DF05B16C403BB00F08A84 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04616C403BB00F08A84 /* 2.png */; };
+		F96DF05C16C403BB00F08A84 /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04716C403BB00F08A84 /* 2@2x.png */; };
+		F96DF05D16C403BB00F08A84 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04816C403BB00F08A84 /* 3.png */; };
+		F96DF05E16C403BB00F08A84 /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04916C403BB00F08A84 /* 3@2x.png */; };
+		F96DF05F16C403BB00F08A84 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04A16C403BB00F08A84 /* 4.png */; };
+		F96DF06016C403BB00F08A84 /* 4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04B16C403BB00F08A84 /* 4@2x.png */; };
+		F96DF06116C403BB00F08A84 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04C16C403BB00F08A84 /* 5.png */; };
+		F96DF06216C403BB00F08A84 /* 5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04D16C403BB00F08A84 /* 5@2x.png */; };
+		F96DF06316C403BB00F08A84 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04E16C403BB00F08A84 /* 6.png */; };
+		F96DF06416C403BB00F08A84 /* 6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF04F16C403BB00F08A84 /* 6@2x.png */; };
+		F96DF06516C403BB00F08A84 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05016C403BB00F08A84 /* 7.png */; };
+		F96DF06616C403BB00F08A84 /* 7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05116C403BB00F08A84 /* 7@2x.png */; };
+		F96DF06716C403BB00F08A84 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05216C403BB00F08A84 /* 8.png */; };
+		F96DF06816C403BB00F08A84 /* 8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05316C403BB00F08A84 /* 8@2x.png */; };
+		F96DF06916C403BB00F08A84 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05416C403BB00F08A84 /* 9.png */; };
+		F96DF06A16C403BB00F08A84 /* 9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05516C403BB00F08A84 /* 9@2x.png */; };
+		F96DF06B16C403BB00F08A84 /* grid_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = F96DF05616C403BB00F08A84 /* grid_empty.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,9 +61,6 @@
 		F96DF01616C291BB00F08A84 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		F96DF01816C291BB00F08A84 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F96DF01A16C291BB00F08A84 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		F96DF01C16C291BB00F08A84 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F96DF01D16C291BB00F08A84 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		F96DF02016C291BB00F08A84 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		F96DF02716C291F100F08A84 /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		F96DF02816C291F100F08A84 /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		F96DF02916C291F100F08A84 /* LandscapeGridController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandscapeGridController.h; sourceTree = "<group>"; };
@@ -55,6 +72,28 @@
 		F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LandscapeGridController.xib; sourceTree = "<group>"; };
 		F96DF03516C298D200F08A84 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F96DF03716C298FB00F08A84 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		F96DF03D16C3FFBE00F08A84 /* LandscapeGridController-ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "LandscapeGridController-ipad.xib"; path = "../LandscapeGridController-ipad.xib"; sourceTree = "<group>"; };
+		F96DF04216C403BB00F08A84 /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
+		F96DF04316C403BB00F08A84 /* 0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "0@2x.png"; sourceTree = "<group>"; };
+		F96DF04416C403BB00F08A84 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		F96DF04516C403BB00F08A84 /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		F96DF04616C403BB00F08A84 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		F96DF04716C403BB00F08A84 /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
+		F96DF04816C403BB00F08A84 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		F96DF04916C403BB00F08A84 /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
+		F96DF04A16C403BB00F08A84 /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		F96DF04B16C403BB00F08A84 /* 4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4@2x.png"; sourceTree = "<group>"; };
+		F96DF04C16C403BB00F08A84 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		F96DF04D16C403BB00F08A84 /* 5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "5@2x.png"; sourceTree = "<group>"; };
+		F96DF04E16C403BB00F08A84 /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		F96DF04F16C403BB00F08A84 /* 6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6@2x.png"; sourceTree = "<group>"; };
+		F96DF05016C403BB00F08A84 /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		F96DF05116C403BB00F08A84 /* 7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "7@2x.png"; sourceTree = "<group>"; };
+		F96DF05216C403BB00F08A84 /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		F96DF05316C403BB00F08A84 /* 8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "8@2x.png"; sourceTree = "<group>"; };
+		F96DF05416C403BB00F08A84 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
+		F96DF05516C403BB00F08A84 /* 9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "9@2x.png"; sourceTree = "<group>"; };
+		F96DF05616C403BB00F08A84 /* grid_empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_empty.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,11 +153,9 @@
 				F96DF02916C291F100F08A84 /* LandscapeGridController.h */,
 				F96DF02A16C291F100F08A84 /* LandscapeGridController.m */,
 				F96DF03316C2976C00F08A84 /* LandscapeGridController.xib */,
+				F96DF03D16C3FFBE00F08A84 /* LandscapeGridController-ipad.xib */,
 				F96DF01316C291BB00F08A84 /* AppDelegate.h */,
 				F96DF01416C291BB00F08A84 /* AppDelegate.m */,
-				F96DF01C16C291BB00F08A84 /* ViewController.h */,
-				F96DF01D16C291BB00F08A84 /* ViewController.m */,
-				F96DF01F16C291BB00F08A84 /* ViewController.xib */,
 				F96DF00B16C291BB00F08A84 /* Supporting Files */,
 			);
 			path = TiledLayerDemo;
@@ -127,6 +164,7 @@
 		F96DF00B16C291BB00F08A84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F96DF04116C403BB00F08A84 /* Images */,
 				F96DF00C16C291BB00F08A84 /* TiledLayerDemo-Info.plist */,
 				F96DF00D16C291BB00F08A84 /* InfoPlist.strings */,
 				F96DF01016C291BB00F08A84 /* main.m */,
@@ -136,6 +174,34 @@
 				F96DF01A16C291BB00F08A84 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F96DF04116C403BB00F08A84 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F96DF04216C403BB00F08A84 /* 0.png */,
+				F96DF04316C403BB00F08A84 /* 0@2x.png */,
+				F96DF04416C403BB00F08A84 /* 1.png */,
+				F96DF04516C403BB00F08A84 /* 1@2x.png */,
+				F96DF04616C403BB00F08A84 /* 2.png */,
+				F96DF04716C403BB00F08A84 /* 2@2x.png */,
+				F96DF04816C403BB00F08A84 /* 3.png */,
+				F96DF04916C403BB00F08A84 /* 3@2x.png */,
+				F96DF04A16C403BB00F08A84 /* 4.png */,
+				F96DF04B16C403BB00F08A84 /* 4@2x.png */,
+				F96DF04C16C403BB00F08A84 /* 5.png */,
+				F96DF04D16C403BB00F08A84 /* 5@2x.png */,
+				F96DF04E16C403BB00F08A84 /* 6.png */,
+				F96DF04F16C403BB00F08A84 /* 6@2x.png */,
+				F96DF05016C403BB00F08A84 /* 7.png */,
+				F96DF05116C403BB00F08A84 /* 7@2x.png */,
+				F96DF05216C403BB00F08A84 /* 8.png */,
+				F96DF05316C403BB00F08A84 /* 8@2x.png */,
+				F96DF05416C403BB00F08A84 /* 9.png */,
+				F96DF05516C403BB00F08A84 /* 9@2x.png */,
+				F96DF05616C403BB00F08A84 /* grid_empty.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,8 +259,29 @@
 				F96DF01716C291BB00F08A84 /* Default.png in Resources */,
 				F96DF01916C291BB00F08A84 /* Default@2x.png in Resources */,
 				F96DF01B16C291BB00F08A84 /* Default-568h@2x.png in Resources */,
-				F96DF02116C291BB00F08A84 /* ViewController.xib in Resources */,
 				F96DF03416C2976C00F08A84 /* LandscapeGridController.xib in Resources */,
+				F96DF03E16C3FFBE00F08A84 /* LandscapeGridController-ipad.xib in Resources */,
+				F96DF05716C403BB00F08A84 /* 0.png in Resources */,
+				F96DF05816C403BB00F08A84 /* 0@2x.png in Resources */,
+				F96DF05916C403BB00F08A84 /* 1.png in Resources */,
+				F96DF05A16C403BB00F08A84 /* 1@2x.png in Resources */,
+				F96DF05B16C403BB00F08A84 /* 2.png in Resources */,
+				F96DF05C16C403BB00F08A84 /* 2@2x.png in Resources */,
+				F96DF05D16C403BB00F08A84 /* 3.png in Resources */,
+				F96DF05E16C403BB00F08A84 /* 3@2x.png in Resources */,
+				F96DF05F16C403BB00F08A84 /* 4.png in Resources */,
+				F96DF06016C403BB00F08A84 /* 4@2x.png in Resources */,
+				F96DF06116C403BB00F08A84 /* 5.png in Resources */,
+				F96DF06216C403BB00F08A84 /* 5@2x.png in Resources */,
+				F96DF06316C403BB00F08A84 /* 6.png in Resources */,
+				F96DF06416C403BB00F08A84 /* 6@2x.png in Resources */,
+				F96DF06516C403BB00F08A84 /* 7.png in Resources */,
+				F96DF06616C403BB00F08A84 /* 7@2x.png in Resources */,
+				F96DF06716C403BB00F08A84 /* 8.png in Resources */,
+				F96DF06816C403BB00F08A84 /* 8@2x.png in Resources */,
+				F96DF06916C403BB00F08A84 /* 9.png in Resources */,
+				F96DF06A16C403BB00F08A84 /* 9@2x.png in Resources */,
+				F96DF06B16C403BB00F08A84 /* grid_empty.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,7 +294,6 @@
 			files = (
 				F96DF01116C291BB00F08A84 /* main.m in Sources */,
 				F96DF01516C291BB00F08A84 /* AppDelegate.m in Sources */,
-				F96DF01E16C291BB00F08A84 /* ViewController.m in Sources */,
 				F96DF02B16C291F100F08A84 /* GridView.m in Sources */,
 				F96DF02C16C291F100F08A84 /* LandscapeGridController.m in Sources */,
 				F96DF02F16C2937200F08A84 /* TimeView.m in Sources */,
@@ -224,14 +310,6 @@
 				F96DF00E16C291BB00F08A84 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F96DF01F16C291BB00F08A84 /* ViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F96DF02016C291BB00F08A84 /* en */,
-			);
-			name = ViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -299,7 +377,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TiledLayerDemo/TiledLayerDemo-Prefix.pch";
 				INFOPLIST_FILE = "TiledLayerDemo/TiledLayerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -310,7 +390,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TiledLayerDemo/TiledLayerDemo-Prefix.pch";
 				INFOPLIST_FILE = "TiledLayerDemo/TiledLayerDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -334,6 +416,7 @@
 				F96DF02616C291BB00F08A84 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
