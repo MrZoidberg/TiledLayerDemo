@@ -119,17 +119,7 @@
     textFrame.origin.y = -lineHeight-3*sqrt(scaleFactor);
     textFrame.size.width -= 5;
     textFrame.size.height = lineHeight + 3;
-    /*
-	CGMutablePathRef path = CGPathCreateMutable();
-	CGPathAddRect(path, NULL, textFrame);
-    
-    //CGSize textSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0,0), NULL, textFrame.size, NULL);
-    //NSLog(NSStringFromCGSize(textSize));
-	// create frame ref
-	CTFrameRef frameRef = CTFramesetterCreateFrame(framesetter,
-                                                    CFRangeMake(0, 0),
-                                                    path, NULL);
-    */
+
 	// set the coordinate system
     CGContextTranslateCTM(context, 0, (channelIndex)*GRID_ROW_HEIGHT);
     CGContextScaleCTM(context, 1.0, -1.0);
@@ -294,7 +284,7 @@
         NSLog(@"Something wrong!");
     }
 	// Render label (Setup)
-    
+    /*
 	UIFont* font = [UIFont fontWithName:@"CourierNewPS-BoldMT" size:10];
 	CGContextSelectFont(context, [[font fontName] cStringUsingEncoding:NSASCIIStringEncoding], [font pointSize], kCGEncodingMacRoman);
 	CGContextSetTextDrawingMode(context, kCGTextFill);
@@ -313,7 +303,7 @@
     CGContextSetStrokeColorWithColor(context, [[UIColor colorWithRed:0.0 green:1.0 blue:1.0 alpha:0.5] CGColor]);
     CGContextAddRect(context, box);
     CGContextStrokePath(context);
-    
+    */
     
     //[timer stopTimer];
     //NSLog(@"Total layer render time was: %lf milliseconds", [timer timeElapsedInMilliseconds]);  
